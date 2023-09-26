@@ -76,9 +76,9 @@ Main hardware elements:
   agent capacitorBank
   agent AZdrives
   agent ELdrives
-  interface "<U+0000>" as 1
-  interface "<U+0000>" as 2
-  interface "<U+0000>" as 3
+  interface "DC bus" as 1
+  interface "DC bus" as 2
+  interface "DC bus" as 3
 
   acLine <-> powerSupply
   powerSupply <-> 1: DC bus
