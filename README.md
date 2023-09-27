@@ -125,10 +125,10 @@ Main hardware elements:
 
 ## Software
 
-Before starting with this section, is important to review these two files:
+Before starting with this section, is **important** to review these two files:
 
-- [MCS Operation](https://gitlab.tekniker.es/publico/3151-lsst/documentation/mcs_operation/-/blob/master/MCS_Operation.md?ref_type=heads)
-- [MCS SW Design Report](https://gitlab.tekniker.es/publico/3151-lsst/documentation/mcs_sw_design/-/blob/master/MCS_SW_Design_Report.md?ref_type=heads)
+- [**MCS Operation**](https://gitlab.tekniker.es/publico/3151-lsst/documentation/mcs_operation/-/blob/master/MCS_Operation.md?ref_type=heads)
+- [**MCS SW Design Report**](https://gitlab.tekniker.es/publico/3151-lsst/documentation/mcs_sw_design/-/blob/master/MCS_SW_Design_Report.md?ref_type=heads)
 
 ### Hardware Configuration tools
 
