@@ -125,7 +125,12 @@ Main hardware elements:
 
 ## Software
 
-### Configuration tools
+Before starting with this section, is important to review these two files:
+
+- [MCS Operation](https://gitlab.tekniker.es/publico/3151-lsst/documentation/mcs_operation/-/blob/master/MCS_Operation.md?ref_type=heads)
+- [MCS SW Design Report](https://gitlab.tekniker.es/publico/3151-lsst/documentation/mcs_sw_design/-/blob/master/MCS_SW_Design_Report.md?ref_type=heads)
+
+### Hardware Configuration tools
 
 - EIB configuration tool
   - There is some documentation on how to change the IP [here](https://gitlab.tekniker.es/publico/3151-lsst/documentation/maintenancedocuments/eib/eib_changeip)
@@ -135,7 +140,7 @@ Main hardware elements:
   - **BoschRexrothRecovery**: This repo has the documentation to recover the Bosch Rexroth hardware from an stacked situation or a major fault.
   - **ReplaceBoschMotor**: Documentation with procedure to replace a Bosch motor and configure it. In this document there are no mechanical instructions for the replacement.
 - TwinCAT, for [ethercat diagnosis](https://gitlab.tekniker.es/publico/3151-lsst/documentation/maintenancedocuments/ethercat/ethercatlinediagnostic)
-- NI distributed system manager: manages the ethercat from the PXIs, this can only run on windows
+- NI distributed system manager: manages the ethercat from the PXIs, this tool comes from National Instruments and can only run on windows
 - EZ-Zone Configurator: for the temperature controller in the AZ-0001 cabinet. Backup config file
   [here](https://gitlab.tekniker.es/aut/projects/3151-LSST/harwareconfigurations/watlowconfiguration)
 - Startup+: for the ethercat modules in all 5 cabinets, AZ-0001, AZ-0101, EL-0101, EL-0102 and PI-0001. This configuration
@@ -153,8 +158,10 @@ causes are listed. This way, when a cause occurs, the system knows how to react 
 
 #### Using the tool
 
-This tool is used as a PLC development environment here the best is to familiarize with it with a training from PILZ
-directly. The easiest things to do here are force variables, this can be done for example to override the brakes.
+This tool is used as a PLC development environment, here the best is to familiarize with it in a training course from PILZ.
+But there are simple things that a user with limited experience can do, e.g. **forcing variables**, this can be done for
+example to override an input or output value. Even though this is a simple action, **it is not recommended**, as forcing
+variables in a safety controller **can lead to serious accidents**.
 
 ### Configuration files
 
@@ -181,31 +188,70 @@ Each PXI has a different set of config files, as each PXI runs a different execu
 - [AUX PXI](https://gitlab.tekniker.es/publico/3151-lsst/documentation/pxicontroller_documentation/-/blob/develop/80%20DeployOnTargets/02%20AUX%20PXI.md?ref_type=heads#configuration-files)
 - [AXES PXI](https://gitlab.tekniker.es/publico/3151-lsst/documentation/pxicontroller_documentation/-/blob/develop/80%20DeployOnTargets/03%20AXES%20PXI.md?ref_type=heads#configuration-files)
 
-These files can be modified to change the behavior of the system, for example some systems requiere and update if the
+These files can be modified to change the behavior of the system, for example some systems require and update if the
 target IP changes, for example the OSS IP is defined in the AUX PXI inside the `/c/OSS/ServerConfig.ini` file. It is
 also important to keep the names of the files, if changed the corresponding task may not start, this could be a way for
 disabling certain subsystem if necessary.
 
 ### EUI
 
-- Review the EUI
-- Explain relevant settings for maintenance purposes
-  - Locking pins disable elevation angle check
-  - Disable modbus temperature controllers when cabinets disabled
-  - Elevation parking
-  - Mirror cover stuck, disable collision checks, dangerous
-  - Force ambient temperature in the EUI
-- Setting sets
+- Overall review of the EUI
+  - Explain the interlocks, that affect the power on of the system and are displayed on the bottom right part of most of
+  the subsystem windows. If not the rejected response received when trying to perform the power on will contain the list
+  of the active interlocks that prevent the power, these are displayed as pop ups when a command is sent, see [pop ups section](#pop-ups).
+  - Historic data display in the EUI, 2 days max
+- Maintenance or useful commands
+  - Force/unForce ambient temperature in the EUI
+  - `Reset all` after reboot to improve performance, as the state machines need to be executed at least once to run properly
 - Users
+  - How to change from one user to another
 - Alarms
+  - How to investigate the alarm log and get the relevant information from them
+- Explain relevant settings for maintenance purposes
+  - Locking pins disable elevation angle check if the position is known, but for some reason doing home in elevation was
+  not possible.
+  - Disable modbus temperature controllers when cabinets disabled e.g. when removing the Camera
+  - Elevation parking, using the predefined setting sets
+  - Mirror cover stuck, disable collision checks, dangerous
+  - Setting sets
 
-#### Settings
+### Pop ups
 
-TODO: Disable Auxiliary cabinets when disconnecting the Camera or any cabinet with temperature controller
+There are times when a pop up message appears in the EUI, these pop ups could be software errors in the EUI or messages
+coming from the PXIs, like rejected messages.
+
+- Software errors in the EUI: these are usually due to communication issues with the PXIs, therefore are very common
+  after a PXI reboot, if that is the case they are not relevant. They just mean that the task reading from the PXIs
+  failed and will be launched again.
+- Messages from the PXIs: these are relevant, as they tell the user meaningful information about the system, they could be:
+  - Rejected: these are responses sent when a command request is rejected, for example in the next figure a `power on` command
+  is rejected for all the mirror covers, here the active interlocks are:
+    - *Mirror cover safety*: there is safety interlock preventing the power on, check the safety matrix in the safety window
+    - *Main Cabinet off*: the temperature controller for the main cabinet is in critical fault state, it must be reset for
+    enabling the power on
+    - *Bosch Power Supply Off*: the power supply for the bosch controllers is off, this means that the motor controlled
+    by bosch can't be powered on.
+
+    ![NoAck from the Mirror Covers when off](./resources/MCpowerOnInterlocks.png)
+
+  - Timeout acknowledge: this response is common after a reboot, as each state machine needs to receive at least 1 command
+  to be initialized properly. A recommended command for doing this at once after a PXI reboot would be `Reset All` from the
+  General commands window.
+
+  - Subsystem not subscribed to command receptor: this message means that the subsystem the user is trying to operate did
+  not start properly.
+
+    ![NotSubscribedToCommandReceptor](./resources/NotSubscribedToCommandReceptor.png)
+
+  - Not connected to PXI: this message means that at least one of the PXIs is not connected, not running properly or powering on,
+  so the user must wait before trying again with the command.
+
+    ![NotConnectedToPXI](./resources/NotConnectedToPXI.png)
 
 ## Error diagnosis
 
-Here is very important to have a general knowledge of the telescope.
+To fully understand the errors produced in the TMA is very important to have a general knowledge of the TMA, the main
+hardware components in the TMA are explain in the [hardware section](#hardware).
 
 Most common errors related with hardware are:
 
@@ -215,6 +261,8 @@ Most common errors related with hardware are:
   [**this**](https://gitlab.tekniker.es/publico/3151-lsst/documentation/maintenancedocuments/ethercat/ethercatlinediagnostic)
   other procedure is required
 - Bosch controller failure, [**procedure**](https://gitlab.tekniker.es/publico/3151-lsst/documentation/maintenancedocuments/boschcontroller/boschrexrothrecovery)
+- Encoder not being able to perform a reference, not homing, this has usually been due to dirt in the encoder tapes. Clean
+  the tapes and try again.
 
 There are other faults that can occur that are not actually due to hardware problems, and that can be recovered easily,
 just knowledge an understanding about the issue is required. Some of these could be:
@@ -224,18 +272,28 @@ just knowledge an understanding about the issue is required. Some of these could
 - Temperature alarms, if the system is too far above the setpoint
 - Temperature warnings, if the system is too far below the setpoint
 - Pressing an ETPB (emergency trip push button), which causes the system to stop
-- Having safety interlocks that prevent the movement or activation of a subsystem. For example: powering on elevation
-  with the locking pins at the inserted position.
+- Having safety interlocks that prevent the movement or activation of a subsystem. For example: trying to power on
+  elevation axis with the locking pins at the inserted position.
 
 ### Log files
 
 #### Location
 
-TODO:
+There are log files in each device running LabVIEW code these files can be found in the following paths for each device:
 
-#### Explained
-
-TODO:
+- MCC (Main Control Computer): this is the device running the EUI and C++ Operation Manager. Here the logs can be found at:
+  - Operation Manager log: log file `/var/log/mtmount_operation_manager/log.log`
+  - EUI logs: `/mnt/telemetry/`
+    - `AlarmHistory`: here the received alarms by the EUI are stored
+    - `ErrorHistory`: here the software errors from the EUI are stored
+    - `MemoryLogging`: here the memory usage of the EUI is stored
+    - `TelemetryLogging`: here the high frequency telemetry received from the PXIs is stored
+    - `WindowLogging`: here the high frequency telemetry stored during move commands from the EUI are stored
+- PXIs (AUX, TMA and AXES): all three PXIs follow the same structure for the logging. Here there are two type of logs:
+  - Application startup log, this is stored using linux messages the log file is `/var/log/messages` for accessing the
+    startup information an alias is available in each PXI `labviewmessages`
+    `alias labviewmessages="cat /var/log/messages | grep LabVIEW_Custom"`
+  - Custom log, these are files generated by the LabVIEW application and are stored in `/home/lvuser/log/`
 
 ## Other options
 
