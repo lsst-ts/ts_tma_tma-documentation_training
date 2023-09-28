@@ -141,6 +141,7 @@ Before starting with this section, is **important** to review these two files:
   - **ReplaceBoschMotor**: Documentation with procedure to replace a Bosch motor and configure it. In this document there are no mechanical instructions for the replacement.
 - TwinCAT, for [ethercat diagnosis](https://gitlab.tekniker.es/publico/3151-lsst/documentation/maintenancedocuments/ethercat/ethercatlinediagnostic)
 - NI distributed system manager: manages the ethercat from the PXIs, this tool comes from National Instruments and can only run on windows
+  - Check signals from the remote IOs, e.g. that the bosch power supply is on
 - EZ-Zone Configurator: for the temperature controller in the AZ-0001 cabinet. Backup config file
   [here](https://gitlab.tekniker.es/aut/projects/3151-LSST/harwareconfigurations/watlowconfiguration)
 - Startup+: for the ethercat modules in all 5 cabinets, AZ-0001, AZ-0101, EL-0101, EL-0102 and PI-0001. This configuration
