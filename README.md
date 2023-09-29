@@ -222,8 +222,6 @@ Cl = Fr + Pr + Av = 4 + 5 + 5 = 14
 Using this table would lead to a SIL 3 or PL e being assigned to the safety function that is intended to mitigate the
 specific hazard.
 
-![Alt text](./resources/SafetyLevelCalculation.png)
-
 [^1]: [Source PILZ web](https://www.pilz.com/en-ES/support/knowhow/law-standards-norms/functional-safety/en-iec-62061)
 
 #### Safety matrix
