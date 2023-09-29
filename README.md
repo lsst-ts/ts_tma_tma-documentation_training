@@ -196,6 +196,11 @@ disabling certain subsystem if necessary.
 
 ### EUI
 
+There is a manual for the EUI available online, both in Spanish and English:
+
+- [English Manual](https://gitlab.tekniker.es/publico/3151-lsst/documentation/eui-manual-english)
+- [Spanish Manual](https://gitlab.tekniker.es/publico/3151-lsst/documentation/eui-manual)
+
 - Overall review of the EUI
   - Explain the interlocks, that affect the power on of the system and are displayed on the bottom right part of most of
   the subsystem windows. If not the rejected response received when trying to perform the power on will contain the list
