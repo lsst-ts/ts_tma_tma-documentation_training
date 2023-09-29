@@ -162,20 +162,7 @@ Keeping this in mind, safety systems are designed to reduce human risks with a s
 each possible risk obtained from a safety evaluation. The equipment or machine risk can be considered in the analysis but
 it must be converted to human risk for including it in the safety function.
 
-Know we understand safety systems, but how do you determine the required safety integrity in accordance with IEC 62061? [^1]
-
-For each risk requiring a safety-related control system, the risk must be estimated and the risk reduction (SIL) defined,
-dependent on the control system. The risk associated with the safety function is estimated in accordance with IEC 62061,
-with consideration given to the following parameters:
-
-- Severity of injury (Se)
-- Frequency and duration of exposure (Fr)
-- Probability of occurrence of a hazardous event (Pr)
-- Probability of avoiding or limiting harm (Av)
-
-##### SIL classification in accordance with IEC 62061 [^1]
-
-###### Classification of severity (Se)
+##### Classification of severity (Se) [^1]
 
 | Consequences | Severity (Se) |
 | ------------ | ------------- |
@@ -183,44 +170,6 @@ with consideration given to the following parameters:
 | Irreversible: broken limb(s), losing a finger(s) | 3 |
 | Reversible: requiring attention from a medical practitioner | 2 |
 | Reversible: requiring first aid | 1 |
-
-###### Classification of the frequency and duration of exposure (Fr)
-
-| Frequency of exposure | Duration (Fr) <= 10 min | Duration (Fr) > 10 min |
-| --------------------- | ----------------------- | ---------------------- |
-| ≥ 1 per h | 5 | 5 |
-| < 1 per h up to ≥ 1 per day | 4 | 5 |
-| < 1 per day up to ≥ 1 every 2 weeks | 3 | 4 |
-| < 1 every 2 weeks up to ≥ 1 per year | 2 | 3 |
-| < 1 per year | 1 | 2 |
-
-###### Classification of probability (Pr)
-
-| Probability of occurrence | Probability (Pr) |
-| ------------------------- | ---------------- |
-| Very high | 5 |
-| Likely | 4 |
-| Possible | 3 |
-| Rarely | 2 |
-| Negligible | 1 |
-
-###### Classification of probability of avoiding or limiting harm (Av)
-
-| Probability of avoiding or limiting | Avoiding and limiting (Av) |
-| ----------------------------------- | -------------------------- |
-| Impossible | 5 |
-| Rarely | 3 |
-| Probable | 1 |
-
-###### Assignment matrix for determining the required SIL (or Plr) for a safety function
-
-![Alt text](./resources/PILZ_AssignmentMatrix.png)
-
-EXAMPLE:
-For a specific hazard where Se = 3, Fr = 4, Pr = 5 and Av = 5, then:
-Cl = Fr + Pr + Av = 4 + 5 + 5 = 14
-Using this table would lead to a SIL 3 or PL e being assigned to the safety function that is intended to mitigate the
-specific hazard.
 
 [^1]: [Source PILZ web](https://www.pilz.com/en-ES/support/knowhow/law-standards-norms/functional-safety/en-iec-62061)
 
@@ -377,6 +326,6 @@ There are log files in each device running LabVIEW code these files can be found
 
 Check and show the available documentation in [Tekniker Gitlab public page](https://gitlab.tekniker.es/publico/3151-lsst/documentation).
 
-## Other options
+## Other Maintenance procedures
 
-TODO: Otros mover AZ con ACW???
+- Move AZ with ACW TODO: add link
