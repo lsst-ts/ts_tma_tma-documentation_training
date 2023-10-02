@@ -242,7 +242,7 @@ There is a manual for the EUI available online, both in Spanish and English:
   - Mirror cover stuck, disable collision checks, dangerous
   - Setting sets
 
-### Pop ups
+#### Pop ups
 
 There are times when a pop up message appears in the EUI, these pop ups could be software errors in the EUI or messages
 coming from the PXIs, like rejected messages.
@@ -274,6 +274,12 @@ coming from the PXIs, like rejected messages.
   so the user must wait before trying again with the command.
 
     ![NotConnectedToPXI](./resources/NotConnectedToPXI.png)
+
+### Settings and events database
+
+- Where is the database running
+- How it is installed
+- How backups are managed (both local and LSST GitHub backup)
 
 ## Error diagnosis
 
