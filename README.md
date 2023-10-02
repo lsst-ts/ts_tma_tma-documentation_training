@@ -335,3 +335,45 @@ Check and show the available documentation in [Tekniker Gitlab public page](http
 ## Other Maintenance procedures
 
 - Move AZ with ACW TODO: add link
+
+### Change the Azimuth and Elevation reference position
+
+There is a setting that allows changing the virtual zero position the telescope uses, for this purpose the following steps
+must be followed:
+
+Steps for Azimuth:
+
+- Power Off both axis (AZ and EL)
+- Make sure you are logged in a user with `Maintenance` privileges
+- Go to the settings window for the Encoder: `ENCODERSYSTEM SETTINGS`
+- Modify the value of the setting *Azimuth Telescope Offset*, note that the value is subtracted from the calculated
+  position, so for virtually moving the zero to positive, negative values must be used.
+- Go to the settings window for the ACW: `AZIMUTH CABLE WRAP SETTINGS`
+- Modify the value of the setting *Position Offset*, according to the change for the encoder, if this is not done the
+  ACW won't be centered with azimuth and the system can be damaged. This value is added to the ACW position that works in
+  module format, so it has 0 to 720 deg range, therefore, to match the position of azimuth the default value is close to
+  360 deg. So if we set a value of *10 deg* for *Azimuth Telescope Offset* we need to set a value of *350 deg* for ACW
+  *Position Offset*.
+- **Reboot the TMA-PXI**: this must be done only for azimuth but is **crucial**.
+- Power on the azimuth axis and make a reference, the new 0 value should be at the desired position.
+
+Steps for Elevation:
+
+- Power Off both axis (AZ and EL)
+- Make sure you are logged in a user with `Maintenance` privileges
+- Go to the settings window for the Encoder: `ENCODERSYSTEM SETTINGS`
+- Modify the value of the setting *Elevation Telescope Offset*, note that the value is subtracted from the calculated
+  position, so for virtually moving the zero to positive, negative values must be used.
+- Power on the elevation axis and make a reference, the new 0 value should be at the desired position.
+
+Example with values:
+
+- Here there is an example with screenshots for the following changes
+- *Azimuth Telescope Offset*: 10 deg
+- *Elevation Telescope Offset*: -5 deg
+
+![Azimuth offset 10 deg](resources/AzimuthOffsetOf10Deg.png)
+
+![Elevation offset -5 deg](resources/ElevationOffsetOf5Deg.png)
+
+![Encoder Settings page](resources/SettingsForEncoderOffsetAzEl.png)
