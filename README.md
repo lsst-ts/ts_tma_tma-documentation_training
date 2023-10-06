@@ -8,9 +8,10 @@ Main hardware elements:
 
 - OSS
   - Location
-  - Work:
-    - Oil supply (bearings and brake oil supply)
-    - Distributed cabinet temperature control (we provide just the setpoint)
+  - Purpose:
+    - Pressurized oil supply (bearings and brake oil supply)
+  - Additional:
+    - Distributed control cabinets with temperature control (we provide just the setpoint)
   - How does it works from EUI, and what it can and can't do
 - Pier cabinet
   - Location
@@ -137,7 +138,7 @@ Before starting with this section, is **important** to review these two files:
   useful as a start point.
 - Bosch configuration tool [folder with 3 docs:](https://gitlab.tekniker.es/publico/3151-lsst/documentation/maintenancedocuments/boschcontroller)
   - **Bosch_Controller_Startup_Configuration**: This repo contains the document for the startup of the Bosch Controller (MLC) and its configuration.
-  - **BoschRexrothRecovery**: This repo has the documentation to recover the Bosch Rexroth hardware from an stacked situation or a major fault.
+  - **BoschRexrothRecovery**: This repo has the documentation to recover the Bosch Rexroth hardware from a stuck situation or a major fault.
   - **ReplaceBoschMotor**: Documentation with procedure to replace a Bosch motor and configure it. In this document there are no mechanical instructions for the replacement.
 - TwinCAT, for [ethercat diagnosis](https://gitlab.tekniker.es/publico/3151-lsst/documentation/maintenancedocuments/ethercat/ethercatlinediagnostic)
 - NI distributed system manager: manages the ethercat from the PXIs, this tool comes from National Instruments and can only run on windows
@@ -195,10 +196,10 @@ There are multiple configuration files in the TMA.
 
 The EUI has the following config files:
 
-- `HMIConfig.xml`: general config for the EUI
-- `HMIWindowsTelemetryVariables.ini`: variables for each window in the EUI
-- `TelemetryTopicsConfiguration.ini`: variables for each topic sent to the CSC
-- `HMI_UserManagementFile.uat`: user config file, encrypted
+- `HMIConfig.xml`: general config for the EUI, [doc](https://gitlab.tekniker.es/publico/3151-lsst/documentation/maintenancedocuments/deployment#configuration-file)
+- `HMIWindowsTelemetryVariables.ini`: variables for each window in the EUI, [doc](https://gitlab.tekniker.es/publico/3151-lsst/documentation/hmicomputers_documentation/-/blob/master/04%20TelemetryManagement/00%20TelemetryManagement.md?ref_type=heads#window-telemetry-configuration-file)
+- `TelemetryTopicsConfiguration.ini`: variables for each topic sent to the CSC, [doc](https://gitlab.tekniker.es/publico/3151-lsst/documentation/hmicomputers_documentation/-/blob/master/04%20TelemetryManagement/00%20TelemetryManagement.md?ref_type=heads#topic-telemetry-configuration-file)
+- `HMI_UserManagementFile.uat`: user config file, encrypted, [doc](https://gitlab.tekniker.es/publico/3151-lsst/documentation/maintenancedocuments/newuserineui)
 
 #### PXI config files
 
@@ -294,8 +295,8 @@ Most common errors related with hardware are:
   [**this**](https://gitlab.tekniker.es/publico/3151-lsst/documentation/maintenancedocuments/ethercat/ethercatlinediagnostic)
   other procedure is required
 - Bosch controller failure, [**procedure**](https://gitlab.tekniker.es/publico/3151-lsst/documentation/maintenancedocuments/boschcontroller/boschrexrothrecovery)
-- Encoder not being able to perform a reference, not homing, this has usually been due to dirt in the encoder tapes. Clean
-  the tapes and try again.
+- Encoder not being able to perform a reference, not homing, this has usually been due to dirt in the encoder tapes. Move
+  somewhere else and try again, if not working, clean the tapes and try again.
 
 There are other faults that can occur that are not actually due to hardware problems, and that can be recovered easily,
 just knowledge an understanding about the issue is required. Some of these could be:
@@ -307,6 +308,17 @@ just knowledge an understanding about the issue is required. Some of these could
 - Pressing an ETPB (emergency trip push button), which causes the system to stop
 - Having safety interlocks that prevent the movement or activation of a subsystem. For example: trying to power on
   elevation axis with the locking pins at the inserted position.
+
+There is a [windows form](https://forms.office.com/e/ymz6VPXN7v) available for error/fault reporting from the TMA, when
+using it is **very important** to have **details** of what the **sequence** was:
+
+- All the commands sent before the fault
+- Command that caused the fault
+- Command origin (CSC, EUI, HHD)
+- Time of the fault (UTC preferred)
+
+Is **not enough just randomly pasting logs** into the form, make an effort understanding the fault message before filling
+in the [fault reporting form](https://forms.office.com/e/ymz6VPXN7v)
 
 ### Log files
 
