@@ -360,13 +360,8 @@ Steps for Azimuth:
 - Go to the settings window for the Encoder: `ENCODERSYSTEM SETTINGS`
 - Modify the value of the setting *Azimuth Telescope Offset*, note that the value is subtracted from the calculated
   position, so for virtually moving the zero to positive, negative values must be used.
-- Go to the settings window for the ACW: `AZIMUTH CABLE WRAP SETTINGS`
-- Modify the value of the setting *Position Offset*, according to the change for the encoder, if this is not done the
-  ACW won't be centered with azimuth and the system can be damaged. This value is added to the ACW position that works in
-  module format, so it has 0 to 720 deg range, therefore, to match the position of azimuth the default value is close to
-  360 deg. So if we set a value of *10 deg* for *Azimuth Telescope Offset* we need to set a value of *350 deg* for ACW
-  *Position Offset*.
-- **Reboot the TMA-PXI**: this must be done only for azimuth but is **crucial**.
+- **Reboot the TMA-PXI**: this must be done only for azimuth but is **crucial**. If TMA PXI is not rebooted the
+  ACW won't be centered with azimuth and the system can be damaged.
 - Power on the azimuth axis and make a reference, the new 0 value should be at the desired position.
 
 Steps for Elevation:
