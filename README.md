@@ -348,7 +348,7 @@ Check and show the available documentation in [Tekniker Gitlab public page](http
 
 - Move AZ with ACW TODO: add link
 
-### Change the Azimuth and Elevation reference position
+### Change the Azimuth and Elevation home position offset
 
 There is a setting that allows changing the virtual zero position the telescope uses, for this purpose the following steps
 must be followed:
