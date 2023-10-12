@@ -384,3 +384,8 @@ Example with values:
 ![Elevation offset -5 deg](resources/ElevationOffsetOf5Deg.png)
 
 ![Encoder Settings page](resources/SettingsForEncoderOffsetAzEl.png)
+
+### How to reference the encoder heads
+
+[How to](https://gitlab.tekniker.es/publico/3151-lsst/documentation/maintenancedocuments/eib/positionmeasurementandreferences)
+
