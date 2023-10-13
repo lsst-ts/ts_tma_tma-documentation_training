@@ -385,7 +385,8 @@ Example with values:
 
 ![Encoder Settings page](resources/SettingsForEncoderOffsetAzEl.png)
 
+[How to](https://gitlab.tekniker.es/publico/3151-lsst/documentation/maintenancedocuments/eib/positionmeasurementandreferences#telescope-offset)
+
 ### How to reference the encoder heads
 
 [How to](https://gitlab.tekniker.es/publico/3151-lsst/documentation/maintenancedocuments/eib/positionmeasurementandreferences)
-
