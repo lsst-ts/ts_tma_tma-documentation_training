@@ -128,26 +128,26 @@ Main hardware elements:
 
 Before starting with this section, is **important** to review these two files:
 
-- [**MCS Operation**](https://gitlab.tekniker.es/publico/3151-lsst/documentation/mcs_operation/-/blob/master/MCS_Operation.md?ref_type=heads)
-- [**MCS SW Design Report**](https://gitlab.tekniker.es/publico/3151-lsst/documentation/mcs_sw_design/-/blob/master/MCS_SW_Design_Report.md?ref_type=heads)
+- [**MCS Operation**](https://github.com/lsst-ts/ts_tma_tma-documentation_mcs-operation/blob/master/MCS_Operation.md)
+- [**MCS SW Design Report**](https://github.com/lsst-ts/ts_tma_tma-documentation_mcs-sw-design/blob/master/MCS_SW_Design_Report.md)
 
 ### Hardware Configuration tools
 
 - EIB configuration tool
-  - There is some documentation on how to change the IP [here](https://gitlab.tekniker.es/publico/3151-lsst/documentation/maintenancedocuments/eib/eib_changeip)
+  - There is some documentation on how to change the IP [here](https://github.com/lsst-ts/ts_tma_tma-documentation_maintenance-documents_eib_eib-change-ip)
   useful as a start point.
-- Bosch configuration tool [folder with 3 docs:](https://gitlab.tekniker.es/publico/3151-lsst/documentation/maintenancedocuments/boschcontroller)
-  - **Bosch_Controller_Startup_Configuration**: This repo contains the document for the startup of the Bosch Controller (MLC) and its configuration.
-  - **BoschRexrothRecovery**: This repo has the documentation to recover the Bosch Rexroth hardware from a stuck situation or a major fault.
-  - **ReplaceBoschMotor**: Documentation with procedure to replace a Bosch motor and configure it. In this document there are no mechanical instructions for the replacement.
-- TwinCAT, for [ethercat diagnosis](https://gitlab.tekniker.es/publico/3151-lsst/documentation/maintenancedocuments/ethercat/ethercatlinediagnostic)
+- Bosch configuration tool 3 docs:
+  - [**Bosch_Controller_Startup_Configuration**](https://github.com/lsst-ts/ts_tma_tma-documentation_maintenance-documents_bosch-controller_bosch-controller-startup-configurati): This repo contains the document for the startup of the Bosch Controller (MLC) and its configuration.
+  - [**BoschRexrothRecovery**](https://github.com/lsst-ts/ts_tma_tma-documentation_maintenance-documents_bosch-controller_bosch-rexroth-recovery): This repo has the documentation to recover the Bosch Rexroth hardware from a stuck situation or a major fault.
+  - [**ReplaceBoschMotor**](https://github.com/lsst-ts/ts_tma_tma-documentation_maintenance-documents_bosch-controller_replace-bosch-motor): Documentation with procedure to replace a Bosch motor and configure it. In this document there are no mechanical instructions for the replacement.
+- TwinCAT, for [ethercat diagnosis](https://github.com/lsst-ts/ts_tma_tma-documentation_maintenance-documents_ethercat_ethercat-line-diagnostic)
 - NI distributed system manager: manages the ethercat from the PXIs, this tool comes from National Instruments and can only run on windows
   - Check signals from the remote IOs, e.g. that the bosch power supply is on
 - EZ-Zone Configurator: for the temperature controller in the AZ-0001 cabinet. Backup config file
-  [here](https://gitlab.tekniker.es/aut/projects/3151-LSST/harwareconfigurations/watlowconfiguration)
+  [here](https://github.com/lsst-ts/ts_tma_hardware-configurations_watlow-configuration)
 - Startup+: for the ethercat modules in all 5 cabinets, AZ-0001, AZ-0101, EL-0101, EL-0102 and PI-0001. This configuration
   must be done locally using a micro usb cable. The backup configuration files are saved
-  [here](https://gitlab.tekniker.es/aut/projects/3151-LSST/LabVIEWCode/PXIController/-/tree/develop/ESIFiles/Phoenix/IOConfiguration?ref_type=heads)
+  [here](https://github.com/lsst-ts/ts_tma_labview_pxi-controller/tree/develop/ESIFiles/Phoenix/IOConfiguration)
 
 ### PAS4000
 
@@ -196,10 +196,10 @@ There are multiple configuration files in the TMA.
 
 The EUI has the following config files:
 
-- `HMIConfig.xml`: general config for the EUI, [doc](https://gitlab.tekniker.es/publico/3151-lsst/documentation/maintenancedocuments/deployment#configuration-file)
-- `HMIWindowsTelemetryVariables.ini`: variables for each window in the EUI, [doc](https://gitlab.tekniker.es/publico/3151-lsst/documentation/hmicomputers_documentation/-/blob/master/04%20TelemetryManagement/00%20TelemetryManagement.md?ref_type=heads#window-telemetry-configuration-file)
-- `TelemetryTopicsConfiguration.ini`: variables for each topic sent to the CSC, [doc](https://gitlab.tekniker.es/publico/3151-lsst/documentation/hmicomputers_documentation/-/blob/master/04%20TelemetryManagement/00%20TelemetryManagement.md?ref_type=heads#topic-telemetry-configuration-file)
-- `HMI_UserManagementFile.uat`: user config file, encrypted, [doc](https://gitlab.tekniker.es/publico/3151-lsst/documentation/maintenancedocuments/newuserineui)
+- `HMIConfig.xml`: general config for the EUI, [doc](https://github.com/lsst-ts/ts_tma_tma-documentation_maintenance-documents_deployment)
+- `HMIWindowsTelemetryVariables.ini`: variables for each window in the EUI, [doc](https://github.com/lsst-ts/ts_tma_tma-documentation_hmi-computers_documentation/blob/master/04%20TelemetryManagement/00%20TelemetryManagement.md#window-telemetry-configuration-file)
+- `TelemetryTopicsConfiguration.ini`: variables for each topic sent to the CSC, [doc](https://github.com/lsst-ts/ts_tma_tma-documentation_hmi-computers_documentation/blob/master/04%20TelemetryManagement/00%20TelemetryManagement.md#topic-telemetry-configuration-file)
+- `HMI_UserManagementFile.uat`: user config file, encrypted, [doc](https://github.com/lsst-ts/ts_tma_tma-documentation_maintenance-documents_eui-user-management)
 
 #### PXI config files
 
@@ -207,9 +207,9 @@ The EUI has the following config files:
 
 Each PXI has a different set of config files, as each PXI runs a different executable. Config files per target:
 
-- [TMA PXI](https://gitlab.tekniker.es/publico/3151-lsst/documentation/pxicontroller_documentation/-/blob/develop/80%20DeployOnTargets/01%20TMA%20PXI.md?ref_type=heads#configuration-files)
-- [AUX PXI](https://gitlab.tekniker.es/publico/3151-lsst/documentation/pxicontroller_documentation/-/blob/develop/80%20DeployOnTargets/02%20AUX%20PXI.md?ref_type=heads#configuration-files)
-- [AXES PXI](https://gitlab.tekniker.es/publico/3151-lsst/documentation/pxicontroller_documentation/-/blob/develop/80%20DeployOnTargets/03%20AXES%20PXI.md?ref_type=heads#configuration-files)
+- [TMA PXI](https://github.com/lsst-ts/ts_tma_tma-documentation_pxi-controller_documentation/blob/master/80%20DeployOnTargets/01%20TMA%20PXI.md#configuration-files)
+- [AUX PXI](https://github.com/lsst-ts/ts_tma_tma-documentation_pxi-controller_documentation/blob/master/80%20DeployOnTargets/02%20AUX%20PXI.md#configuration-files)
+- [AXES PXI](https://github.com/lsst-ts/ts_tma_tma-documentation_pxi-controller_documentation/blob/master/80%20DeployOnTargets/03%20AXES%20PXI.md#configuration-files)
 
 These files can be modified to change the behavior of the system, for example some systems require and update if the
 target IP changes, for example the OSS IP is defined in the AUX PXI inside the `/c/OSS/ServerConfig.ini` file. It is
@@ -220,8 +220,8 @@ disabling certain subsystem if necessary.
 
 There is a manual for the EUI available online, both in Spanish and English:
 
-- [English Manual](https://gitlab.tekniker.es/publico/3151-lsst/documentation/eui-manual-english)
-- [Spanish Manual](https://gitlab.tekniker.es/publico/3151-lsst/documentation/eui-manual)
+- [English Manual](https://github.com/lsst-ts/ts_tma_tma-documentation_eui-manual-english)
+- [Spanish Manual](https://github.com/lsst-ts/ts_tma_tma-documentation_eui-manual-spanish)
 
 - Overall review of the EUI
   - Explain the interlocks, that affect the power on of the system and are displayed on the bottom right part of most of
@@ -290,11 +290,11 @@ hardware components in the TMA are explain in the [hardware section](#hardware).
 Most common errors related with hardware are:
 
 - EtherCAT line failure, here it can be just some minor issue which can be easily recovered by
-  [**this**](https://gitlab.tekniker.es/publico/3151-lsst/documentation/maintenancedocuments/ethercat/manageethercatlinestatus)
+  [**this**](https://github.com/lsst-ts/ts_tma_tma-documentation_maintenance-documents_ethercat_manage-ethercat-line-status)
   procedure or a greater issue, that can not be recovered with the mentioned procedure and
-  [**this**](https://gitlab.tekniker.es/publico/3151-lsst/documentation/maintenancedocuments/ethercat/ethercatlinediagnostic)
+  [**this**](https://github.com/lsst-ts/ts_tma_tma-documentation_maintenance-documents_ethercat_ethercat-line-diagnostic)
   other procedure is required
-- Bosch controller failure, [**procedure**](https://gitlab.tekniker.es/publico/3151-lsst/documentation/maintenancedocuments/boschcontroller/boschrexrothrecovery)
+- Bosch controller failure, [**procedure**](https://github.com/lsst-ts/ts_tma_tma-documentation_maintenance-documents_bosch-controller_bosch-rexroth-recovery)
 - Encoder not being able to perform a reference, not homing, this has usually been due to dirt in the encoder tapes. Move
   somewhere else and try again, if not working, clean the tapes and try again.
 
@@ -342,7 +342,7 @@ There are log files in each device running LabVIEW code these files can be found
 
 ## Available documentation review
 
-Check and show the available documentation in [Tekniker Gitlab public page](https://gitlab.tekniker.es/publico/3151-lsst/documentation).
+Check and show the available documentation in [public page](https://github.com/orgs/lsst-ts/repositories?q=topic%3Atma+topic%3Adocument).
 
 ## Other Maintenance procedures
 
@@ -385,8 +385,8 @@ Example with values:
 
 ![Encoder Settings page](resources/SettingsForEncoderOffsetAzEl.png)
 
-[How to](https://gitlab.tekniker.es/publico/3151-lsst/documentation/maintenancedocuments/eib/positionmeasurementandreferences#telescope-offset)
+[How to](https://github.com/lsst-ts/ts_tma_tma-documentation_maintenance-documents_eib_position-measurement-and-references?tab=readme-ov-file#telescope-offset)
 
 ### How to reference the encoder heads
 
-[How to](https://gitlab.tekniker.es/publico/3151-lsst/documentation/maintenancedocuments/eib/positionmeasurementandreferences)
+[How to](https://github.com/lsst-ts/ts_tma_tma-documentation_maintenance-documents_eib_position-measurement-and-references)
