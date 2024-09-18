@@ -70,7 +70,7 @@ Main hardware elements:
   - Temperature control
   - How does it works from EUI, and what it can and can't do
 
-  ```plantuml
+  ```{uml}
   @startuml
   agent acLine
   agent powerSupply
