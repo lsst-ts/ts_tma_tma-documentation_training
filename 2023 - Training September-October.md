@@ -1,4 +1,4 @@
-# Training September-October 2023
+# 2023 - Training September-October (HW + SW)
 
 ## Hardware
 
