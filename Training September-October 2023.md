@@ -2,7 +2,7 @@
 
 ## Hardware
 
-Hardware slides can be found [**here**](https://github.com/lsst-ts/ts_tma_tma-documentation_training_2023-october/blob/master/slides/Training_Hardware_compressed.pdf)
+Hardware slides can be found [**here**](https://github.com/lsst-ts/ts_tma_tma-documentation_training/blob/master/slides/2023-September-October/Training_Hardware_compressed.pdf)
 
 The aim of this section is locating and explaining main hardware elements in the telescope.
 
@@ -128,7 +128,7 @@ Main hardware elements:
 
 ## Software
 
-Software slides can be found [**here**](https://github.com/lsst-ts/ts_tma_tma-documentation_training_2023-october/blob/master/slides/Training_Software.pdf)
+Software slides can be found [**here**](https://github.com/lsst-ts/ts_tma_tma-documentation_training/blob/master/slides/2023-September-October/Training_Software.pdf)
 
 Before starting with this section, is **important** to review these two files:
 
