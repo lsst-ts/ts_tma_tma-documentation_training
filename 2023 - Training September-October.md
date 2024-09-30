@@ -83,7 +83,7 @@ Main hardware elements:
   interface "DC bus" as 2
   interface "DC bus" as 3
 
-  acLine <-> powerSupply
+  acLine -> powerSupply
   powerSupply <-> 1: DC bus
   1 <-d-> capacitorBank
   1 <-> 2: DC bus
